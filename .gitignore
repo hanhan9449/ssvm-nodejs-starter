@@ -15,9 +15,6 @@ build
 npm-debug.log
 package-lock.json
 
-# ssvm
-# pkg
-
 # local computer
 .env
 .DS_Store
