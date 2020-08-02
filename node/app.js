@@ -13,7 +13,7 @@ app.all('*', function(req, res, next) {
     res.header("Content-Type", "application/json;charset=utf-8");
     next();
 });
-app.use(express.static("public"));
+app.use(express.static(__dirname + "/public"));
 app.use(fileUpload());
 
 app.get("/", (req, res) => {
