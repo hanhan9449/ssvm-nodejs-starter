@@ -1,19 +1,28 @@
-const { say } = require('../pkg/ssvm_nodejs_starter_lib.js');
+// const { say } = require("../pkg/ssvm_nodejs_starter_lib.js");
+const express = require("express");
+const fileUpload = require("express-fileupload");
 
-const http = require('http');
-const url = require('url');
-const hostname = '0.0.0.0';
+const hostname = "0.0.0.0";
 const port = 3000;
+const app = express();
 
-const server = http.createServer((req, res) => {
-  const queryObject = url.parse(req.url,true).query;
-  if (!queryObject['name']) {
-    res.end(`Please use command curl http://${hostname}:${port}/?name=MyName \n`);
-  } else {
-    res.end(say(queryObject['name']) + '\n');
-  }
+app.use(express.static("public"));
+app.use(fileUpload());
+
+app.get("/", (req, res) => {
+  res.redirect("/index.html");
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+app.post("/handler", (req, res) => {
+  res.setHeader('Content-type', 'image/jpeg')
+  if (!req.files || Object.keys(req.files).length === 0) {
+    return res.status(400).send("No files were uploaded");
+  }
+  let origin_img = req.files.image_file;
+  // console.log(origin_img.data.toString('base64'))
+  // res.send(origin_img.data)
+  res.end(origin_img.data.toString('base64'))
+});
+app.listen(port, hostname, () => {
+  console.log(`Listening at http://${hostname}:${port}`);
 });

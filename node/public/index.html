@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>handler photo</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+ 
+    <!-- <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"
+      integrity="sha384-qlmct0AOBiA2VPZkMY3+2WqkHtIQ9lSdAsAn5RUJD/3vA5MKDgSGcdmIv4ycVxyn"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(function () {
+        var options = {
+          target: "#result",
+          url: "/handler",
+          type: "post",
+          success: enableButton,
+        };
+        $("#up-file").ajaxForm(options);
+      });
+      function enableButton(responseText, statusText, xhr, $form) {
+        $("#recognize").prop("disabled", false);
+      }
+    </script> -->
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>handler photo</h1>
+
+      <form
+        id="up-file"
+        enctype="multipart/form-data"
+        method="POST"
+        class="form"
+      >
+        <label for="image_unload">Please upload an image file</label>
+        <input type="file" name="image_unload" id="image_unload" />
+        <button id="submit" onclick="return false">start!</button>
+      </form>
+      <h2>preview</h2>
+      <div class="img-container">
+        <img src="" alt="" id="origin-img" />
+        <img src="" alt="" id="processed-img" />
+      </div>
+    </div>
+  </body>
+  <script src="index.js"></script>
+</html>
