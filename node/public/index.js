@@ -29,19 +29,6 @@ submit_button.addEventListener("click", (e) => {
       console.log("Uploading");
     },
   }).done((data) => {
-    console.log(data);
-    function hexToBase64(str) {
-      return btoa(
-        String.fromCharCode.apply(
-          null,
-          str
-            .replace(/\r|\n/g, "")
-            .replace(/([\da-fA-F]{2}) ?/g, "0x$1 ")
-            .replace(/ +$/, "")
-            .split(" ")
-        )
-      );
-    }
     processed_img.src = "data:image/jpeg;base64," + data;
     // console.log(processed_img.src)
     // console.log("Ok");

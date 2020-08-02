@@ -1,18 +1,13 @@
 // const { say } = require("../pkg/ssvm_nodejs_starter_lib.js");
 const express = require("express");
 const fileUpload = require("express-fileupload");
+const cors = require('cors')
 
 const hostname = "0.0.0.0";
 const port = 3000;
 const app = express();
-app.all('*', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-    res.header("X-Powered-By",' 3.2.1')
-    res.header("Content-Type", "application/json;charset=utf-8");
-    next();
-});
+
+app.use(cors())
 app.use(express.static(__dirname + "/public"));
 app.use(fileUpload());
 
